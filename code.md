@@ -1,4 +1,4 @@
 Here where I did step xyz
-```markdown
+```R
 test.py input output
 ```
