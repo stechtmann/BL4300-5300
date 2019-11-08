@@ -1,0 +1,7 @@
+﻿id,dex
+Cond WT Rep 1,Control
+Cond WT Rep 2,Control
+Cond WT Rep 3,Control
+Cond Mt Rep 1,Mutant
+Cond Mt Rep 2,Mutant
+Cond Mt Rep 3,Mutant
