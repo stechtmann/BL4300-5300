@@ -76,5 +76,5 @@ This command is performing the following function.
 
 #### Run the prokka pipeline on the `contigs_names.fasta` file.
 ```{BASH}
-prokka --outdir G15 --prefix G15 contigs_names.fasta
+prokka --outdir G15 --prefix G15 --locustag G15 contigs_names.fasta
 ```
