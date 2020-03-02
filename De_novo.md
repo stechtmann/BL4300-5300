@@ -34,7 +34,7 @@ fastqc T1_R2.fastq.gz
 ```
 ## Quality Trimming with Trimmomatic
 ```{BASH}
-trimmomatic-0.39.jar PE input_forward.fq.gz input_reverse.fq.gz output_forward_paired.fq.gz output_forward_unpaired.fq.gz output_reverse_paired.fq.gz output_reverse_unpaired.fq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:36
+trimmomatic PE G15_S3_L001_R1_001.fastq.gz G15_S3_L001_R2_001.fastq.gz G15_pair_R1.fastq.gz G15_unpair_R1.fastq.gz G15_pair_R2.fastq.gz G15_unpair_R2.fastq.gz ILLUMINACLIP:~/miniconda3/pkgs/trimmomatic-0.36-6/share/trimmomatic-0.36-6/adapters/NexteraPE-PE.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:36
 ```
 
 ## Check that quality trimming worked
