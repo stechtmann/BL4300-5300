@@ -1,0 +1,218 @@
+[15:43:43] Using dbhome '/data/home/sharedDatabases/phyloflash/138.1'
+[15:43:43] working on library TEST
+[15:43:43] Forward reads ../Metagenome_R1_trimmed.fastq.gz
+[15:43:43] Reverse reads ../Metagenome_R2_trimmed.fastq.gz
+[15:43:43] Automatic read length detection
+[15:43:43] running subcommand:
+	   readlength.sh readlength reads=10000 bin=1
+	   in=../Metagenome_R1_trimmed.fastq.gz
+	   in2=../Metagenome_R2_trimmed.fastq.gz >TEST.readlength.out
+	   2>TEST.readlength.err
+[15:43:44] Reads are not all the same length, using longest read length
+	   found...
+[15:43:44] Auto-detected read length: 131
+[15:43:44] Running "everything" except EMIRGE- overrides other command line
+	   options
+[15:43:44] Current operating system linux
+[15:43:44] Checking for required tools.
+[15:43:44] Using nhmmer found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/barrnap-HGV/binaries/linux/nhmmer".
+[15:43:44] Using plotscript_SVG found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl".
+[15:43:44] Using vsearch found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/vsearch".
+[15:43:44] Using mafft found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/mafft".
+[15:43:44] Using grep found at "/usr/bin/grep".
+[15:43:44] Using bbmap found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/bbmap.sh".
+[15:43:44] Using reformat found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/reformat.sh".
+[15:43:44] Using barrnap found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/barrnap-HGV/bin/barrnap_HGV".
+[15:43:44] Using spades found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/spades.py".
+[15:43:44] Using sed found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/sed".
+[15:43:44] Using fastaFromBed found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/fastaFromBed".
+[15:43:44] Using awk found at "/usr/bin/awk".
+[15:43:44] Using readlength found at
+	   "/home/BL5300/mambaforge/envs/Applied_Genomics/bin/readlength.sh".
+[15:43:44] Using cat found at "/usr/bin/cat".
+[15:43:44] All required tools found.
+[15:43:44] filtering reads with SSU db using minimum identity of 70%
+[15:43:44] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/bbmap.sh
+	   fast=t minidentity=0.7 -Xmx20g reads=-1 threads=32 po=f
+	   outputunmapped=f
+	   path=/data/home/sharedDatabases/phyloflash/138.1
+	   out=TEST.bbmap.sam
+	   outm=TEST.Metagenome_R1_trimmed.fastq.gz.SSU.1.fq noheader=t
+	   ambiguous=all build=1 in=../Metagenome_R1_trimmed.fastq.gz
+	   bhist=TEST.basecompositionhistogram ihist=TEST.inserthistogram
+	   idhist=TEST.idhistogram scafstats=TEST.hitstats overwrite=t
+	   outm2=TEST.Metagenome_R1_trimmed.fastq.gz.SSU.2.fq pairlen=1200
+	   in2=../Metagenome_R2_trimmed.fastq.gz 2>TEST.bbmap.out
+[15:48:03] done...
+[15:48:03] Reading SAM file TEST.bbmap.sam into memory
+[15:48:05] Writing fixed SAM file to
+	   TEST.Metagenome_R1_trimmed.fastq.gz.SSU.sam
+[15:48:07] Done
+[15:48:07] Total read segments processed: 5881028
+[15:48:07] insert size median: 331
+[15:48:07] insert size std deviation: 136
+[15:48:07] Summarizing taxonomy from mapping hits to SILVA database
+[15:48:10] done...
+[15:48:10] Forward read segments mapping: 4059
+[15:48:10] Reverse read segments mapping: 3756
+[15:48:10] Reporting mapping statistics for paired end input
+[15:48:10] Total read pairs with at least one segment mapping: 6188
+[15:48:10] => both segments mapping to same reference: 1349
+[15:48:10] => both segments mapping to different references: 278
+[15:48:10] Read segments where next segment unmapped: 4561
+[15:48:10] mapping rate: 0.210%
+[15:48:10] subsampling SSU reads and running nhmmer to check coverage
+	   evenness across gene
+[15:48:10] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/reformat.sh
+	   in=TEST.Metagenome_R1_trimmed.fastq.gz.SSU.1.fq
+	   out=TEST.readsf.subsample.fasta srt=10000 ow=t
+	   in2=TEST.Metagenome_R1_trimmed.fastq.gz.SSU.2.fq
+	   2>TEST.reformat.out
+[15:48:27] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/barrnap-HGV/binaries/linux/nhmmer
+	   --cpu 32 --tblout TEST.nhmmer.tblout
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/barrnap-HGV/db/ssu/ssu_ABE.hmm
+	   TEST.readsf.subsample.fasta >/dev/null
+[15:50:02] Fewer than 50 maps to eukaryotic SSU HMM model, skip plotting
+	   histogram...
+[15:50:02] done
+[15:50:02] creating phylotypes with SPAdes
+[15:50:02] kmers for SPAdes are 103,113,123
+[15:50:02] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/spades.py -o
+	   TEST.spades -t 24 -m 20 -k 103,113,123 -1
+	   TEST.Metagenome_R1_trimmed.fastq.gz.SSU.1.fq -2
+	   TEST.Metagenome_R1_trimmed.fastq.gz.SSU.2.fq >TEST.spades.out
+	   2>&1
+[15:51:39] done...
+[15:51:39] getting SSU phylotypes and their coverages...
+[15:51:39] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom bac --gene ssu --threads
+	   32 TEST.spades/scaffolds.fasta >TEST.scaffolds.bac.gff
+	   2>TEST.barrnap.out
+[15:51:40] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom arch --gene ssu
+	   --threads 32 TEST.spades/scaffolds.fasta
+	   >TEST.scaffolds.arch.gff 2>TEST.barrnap.out
+[15:51:40] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/barrnap-HGV/bin/barrnap_HGV
+	    --evalue 1e-100 --reject 0.6 --kingdom euk --gene ssu --threads
+	   32 TEST.spades/scaffolds.fasta >TEST.scaffolds.euk.gff
+	   2>TEST.barrnap.out
+[15:51:42] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/fastaFromBed
+	   -fi TEST.spades/scaffolds.fasta -bed TEST.scaffolds.final.gff
+	   -fo TEST.spades_rRNAs.fastaFromBed.fasta -s -name
+	   >TEST.fastaFromBed.out 2>&1
+[15:51:42] done...
+[15:51:42] mapping extracted SSU reads back on SPAdes SSU sequences
+[15:51:42] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/bbmap.sh
+	   fast=t minidentity=0.98 -Xmx20g threads=32 po=f outputunmapped=t
+	   ref=TEST.spades_rRNAs.final.fasta nodisk
+	   in=TEST.Metagenome_R1_trimmed.fastq.gz.SSU.1.fq
+	   out=TEST.Metagenome_R1_trimmed.fastq.gz.SSU_spades.sam
+	   noheader=t overwrite=t
+	   in2=TEST.Metagenome_R1_trimmed.fastq.gz.SSU.2.fq pairlen=1200
+	   2>TEST.remap_spades.bbmap.out
+[15:51:49] done...
+[15:51:49] searching for DB matches with vsearch
+[15:51:49] running subcommand:
+	   /usr/bin/cat TEST.spades_rRNAs.final.fasta >TEST.all.final.fasta
+[15:51:49] Vsearch v2.5.0+ found, will index database to UDB file
+[15:51:49] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/vsearch
+	   -usearch_global TEST.all.final.fasta -id 0.7 -userout
+	   TEST.all.vsearch.csv -userfields
+	   query+target+id+alnlen+evalue+id3+qs+pairs+gaps+mism+ids
+	   -threads 32 --strand plus --notrunclabels -notmatched
+	   TEST.all.final.phyloFlash.notmatched.fa -dbmatched
+	   TEST.all.final.phyloFlash.dbhits.fa -db
+	   /data/home/sharedDatabases/phyloflash/138.1/SILVA_SSU.noLSU.masked.trimmed.udb
+	   >TEST.all.vsearch.out 2>&1
+[15:52:00] done...
+[15:52:00] clustering DB matches at 97%
+[15:52:00] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/vsearch  
+	   --cluster_fast TEST.all.final.phyloFlash.dbhits.fa -id 0.97
+	   -centroids TEST.all.dbhits.NR97.fa -notrunclabels --threads 32
+	   >TEST.clusterdbhits.out 2>&1
+[15:52:00] done...
+[15:52:00] creating alignment and tree...
+[15:52:00] running subcommand:
+	   /usr/bin/cat TEST.all.dbhits.NR97.fa
+	   TEST.spades_rRNAs.final.fasta >TEST.SSU.collection.fasta
+[15:52:00] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/bin/mafft
+	   --treeout TEST.SSU.collection.fasta
+	   >TEST.SSU.collection.alignment.fasta
+	   2>TEST.SSU.collection.alignment.mafftout
+[15:52:00] done...
+[15:52:00] Reading remappings to summarize taxonomy of unmapped reads
+[15:52:00] Reading results of remapping to SPAdes results
+[15:52:01] total fwd reads remapping:1241
+[15:52:01] total rev reads remapping:1233
+[15:52:01] Done
+[15:52:01] writing final files...
+[15:52:01] exporting results to csv
+[15:52:01] generating graphics for report in SVG format
+[15:52:01] Plotting mapping ID histogram
+[15:52:01] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist TEST.idhistogram  --title="Mapping identity (%)" 
+	   >TEST.plotscript.out 2>&1
+[15:52:01] Plotting piechart of mapping ratios
+[15:52:01] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -pie TEST.mapratio.csv -title="0.210 % pairs mapped"
+	   >TEST.plotscript.out 2>&1
+[15:52:01] Plotting piechart of assembled reads ratio
+[15:52:01] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --pie TEST.assemratio.csv  --title="Reads assembled"
+	   >TEST.plotscript.out 2>&1
+[15:52:01] Plotting histogram of insert sizes
+[15:52:01] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl
+	   --hist  TEST.inserthistogram  --title="Insert size (bp)" 
+	   >TEST.plotscript.out 2>&1
+[15:52:01] Plotting positional coverage across SSU rRNA hmm models
+[15:52:01] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -hist TEST.nhmmer.prok.histogram -height 150 -width 480
+	   -title="Coverage on 16S model" -color="blue"
+	   >TEST.plotscript.out 2>&1
+[15:52:01] Plotting tree of assembled + reference SSU sequences
+[15:52:01] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -tree TEST.SSU.collection.fasta.tree -assemcov
+	   TEST.phyloFlash.extractedSSUclassifications.csv -treefasta
+	   TEST.SSU.collection.fasta -unassemcount 5341
+	   >TEST.plotscript.out 2>&1
+[15:52:01] Plotting barplot of taxonomic summary
+[15:52:01] running subcommand:
+	   /home/BL5300/mambaforge/envs/Applied_Genomics/lib/phyloFlash/phyloFlash_plotscript_svg.pl
+	   -bar TEST.phyloFlash.NTUabundance.csv -title="Taxonomic summary
+	   from reads mapped" >TEST.plotscript.out 2>&1
+[15:52:01] done
+[15:52:01] Generating HTML-formatted report and graphics ... 
+[15:52:01] Cleaning temp files...
+[15:52:01] Walltime used: 8.28 minutes with 32 CPU cores
+[15:52:01] Thank you for using phyloFlash
+	   You can find your results in TEST.*,
+	   Your main result file is TEST.phyloFlash
+[15:52:01] Saving log to file TEST.phyloFlash.log
